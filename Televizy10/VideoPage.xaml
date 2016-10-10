@@ -1,0 +1,125 @@
+﻿<Page
+    x:Class="Televizy10.VideoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Televizy10"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:Televizy10.Models" 
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Dark">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Row="0" Background="#FF272727">
+            <StackPanel Orientation="Horizontal" Height="48" >
+                <Button x:Name="HamburgerButton" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Height="48" Width="48" FontFamily="Segoe MDL2 Assets" FontSize="24" Content="&#xE700;" Click="HamburgerButton_Click" />
+                <TextBlock x:Name="ChannelNameHeader" Text="" FontFamily="Segoe UI Black" FontSize="22" VerticalAlignment="Center" Margin="20,0,0,0" FontWeight="Bold"/>
+            </StackPanel>
+            <!--<ToggleButton x:Name="btnChannelFav" Height="48" Width="48" FontFamily="Segoe MDL2 Assets" FontSize="24"  Content="" RelativePanel.AlignRightWithPanel="True" Checked="btnChannelFav_Checked" Unchecked="btnChannelFav_Unchecked" />-->
+        </RelativePanel>
+        <SplitView x:Name="VideoPageSplitView" Grid.Row="1">
+            <SplitView.Pane>
+                <ScrollViewer>
+                    <StackPanel Orientation="Vertical">
+                        
+                        <ListBox x:Name="SplitPaneItems" SelectionMode="Single" >
+                            <ListBoxItem x:Name="HomePageButton" Height="48" Tapped="HomePageButton_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock   FontFamily="Segoe MDL2 Assets" FontSize="20" Text="&#xE179;" VerticalAlignment="Center" TextAlignment="Center"  />
+                                    <TextBlock Text="Tüm Kanallar" FontSize="18" Margin="20,0,0,0" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
+                        </ListBox>
+                        <Rectangle Fill="DarkGray"/>
+                        <ListBox x:Name="SplitPaneItems2" SelectionMode="Single" >
+                            <ListBoxItem x:Name="Channel1" Height="48" Tapped="Channel1_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="1" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="Kanal D" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="Channel2" Height="48" Tapped="Channel2_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="2" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="Star Tv" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="Channel3" Height="48" Tapped="Channel3_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="3" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="Show Tv" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="Channel4" Height="48" Tapped="Channel4_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="4" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="ATV" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="Channel5" Height="48" Tapped="Channel5_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="5" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="TV 8" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="Channel6" Height="48" Tapped="Channel6_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="6" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="Fox TV" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="Channel7" Height="48" Tapped="Channel7_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="7" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="TRT HD" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="Channel8" Height="48" Tapped="Channel8_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="8" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="TRT 1" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="Channel9" Height="48" Tapped="Channel9_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="9" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="NTV" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="Channel10" Height="48" Tapped="Channel10_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="10" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="NTV Spor" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="Channel11" Height="48" Tapped="Channel11_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="10" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="Haber Türk" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="Channel12" Height="48" Tapped="Channel12_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontSize="24" Text="10" Width="20" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="Bloomberg HT" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                        </ListBox>
+                            
+
+                    </StackPanel>
+                </ScrollViewer>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <MediaElement x:Name="ChannelPlayer" Grid.Row="1" Height="auto" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                       AreTransportControlsEnabled="True" MediaFailed="ChannelPlayer_MediaFailed" KeyDown="ChannelPlayer_KeyDown" />
+            </SplitView.Content>
+        </SplitView>
+
+        
+    </Grid>
+</Page>

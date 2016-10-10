@@ -1,0 +1,85 @@
+﻿<Page
+    x:Class="Televizy10.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Televizy10"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:Televizy10.Models"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:DataType="data:Channel" x:Key="ChannelDataTemplate">
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" BorderBrush="Black" BorderThickness="1" Margin="5" Height="48" Width="200" >
+                <Image Width="48" Height="48" Source="{x:Bind ChannelImage}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <TextBlock FontSize="18" Text="{x:Bind ChannelName}"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Dark">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="48"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <RelativePanel Grid.Row="0" Background="#FF272727">
+            <StackPanel Orientation="Horizontal" Height="48" >
+                <Button x:Name="HamburgerButton" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Height="48" Width="48" FontFamily="Segoe MDL2 Assets" FontSize="24" Content="&#xE700;" Click="HamburgerButton_Click" />
+                <TextBlock Text="Tüm Kanallar" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" FontFamily="Segoe UI Black" FontSize="22" FontWeight="Bold"  />
+            </StackPanel>
+            
+        </RelativePanel>
+        
+        <SplitView x:Name="MainSplitView" Grid.Row="1" DisplayMode="CompactOverlay" HorizontalAlignment="Left">
+            <SplitView.Pane>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Row="0">
+                        <ListBox x:Name="SplitPaneItems" SelectionMode="Single" >
+                            <ListBoxItem x:Name="HomePageButton" Height="48" IsSelected="True" Tapped="HomePageButton_Tapped" >
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock   FontFamily="Segoe MDL2 Assets" FontSize="20" Text="&#xE179;" VerticalAlignment="Center" TextAlignment="Center"  />
+                                    <TextBlock Text="Ana Sayfa" FontSize="18" Margin="20,0,0,0" VerticalAlignment="Center" />
+                                </StackPanel>
+                            </ListBoxItem>
+                            <ListBoxItem x:Name="FavButton" Height="48" Tapped="FavButton_Tapped">
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="20" Text="&#xE113;" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="Favori Kanallarım" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                        </ListBox>
+                    </StackPanel>
+                <StackPanel Grid.Row="2">
+                        <ListBox VerticalAlignment="Bottom">
+                            <ListBoxItem x:Name="btnSettings" Height="48" Tapped="btnSettings_Tapped">
+                                <StackPanel Orientation="Horizontal" Height="28" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                    <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="20" Text="&#xE115;" VerticalAlignment="Center" TextAlignment="Center"/>
+                                    <TextBlock FontSize="18" Text="Ayarlar" VerticalAlignment="Center" Margin="20,0,0,0"/>
+                                </StackPanel>
+                            </ListBoxItem>
+                        </ListBox>
+                    </StackPanel>
+                </Grid>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                
+                    <GridView Name="ChannelGridView" ItemsSource="{x:Bind Channels}" IsItemClickEnabled="True" ItemTemplate="{StaticResource ChannelDataTemplate}" ItemClick="ChannelGridView_ItemClick" Margin="10" >
+                        <GridView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <ItemsWrapGrid x:Name="wrapGridChannels" Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </GridView.ItemsPanel>
+                    </GridView>
+                
+            </SplitView.Content>
+        </SplitView>
+
+    </Grid>
+</Page>
